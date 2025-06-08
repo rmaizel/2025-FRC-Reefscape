@@ -1,16 +1,28 @@
-package frc.robot.subsystems.score;
-//NOTE: We don't need to IMPORT classes in the same package
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
 
-import com.revrobotics.spark.SparkMax;
+package frc.robot.subsystems.score;
+
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Config;
 
 public class Shooter extends SubsystemBase {
-    // Constructors
     private SparkMaxConfig motorConfig = new SparkMaxConfig();
     private SparkMax rightShooterMotor = new SparkMax(Config.CAN_ID.get("SHOOTER_MOTOR_R"), MotorType.kBrushless);
     private SparkMax leftShooterMotor = new SparkMax(Config.CAN_ID.get("SHOOTER_MOTOR_L"), MotorType.kBrushless);
+    private DigitalInput coralSensor = new DigitalInput(Config.DIO_PORT.get("CORAL_SENSOR_F"));
 
+  /** Creates a new Shooter. */
+  public Shooter() {}
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
 }
