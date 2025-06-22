@@ -14,9 +14,9 @@ import frc.robot.Config;
 
 public class Shooter extends SubsystemBase {
     private SparkMaxConfig motorConfig = new SparkMaxConfig();
-    private SparkMax rightShooterMotor = new SparkMax(Config.CAN_ID.get("SHOOTER_MOTOR_R"), MotorType.kBrushless);
-    private SparkMax leftShooterMotor = new SparkMax(Config.CAN_ID.get("SHOOTER_MOTOR_L"), MotorType.kBrushless);
-    private DigitalInput coralSensor = new DigitalInput(Config.DIO_PORT.get("CORAL_SENSOR_F"));
+    private SparkMax rightShooterMotor = new SparkMax(Config.CAN.SHOOTER_MOTOR_R.getID(), MotorType.kBrushless);
+    private SparkMax leftShooterMotor = new SparkMax(Config.CAN.SHOOTER_MOTOR_L.getID(), MotorType.kBrushless);
+    private DigitalInput coralSensor = new DigitalInput(Config.DIO.CORAL_SENSOR_F.getPort());
 
   /** Creates a new Shooter. */
   public Shooter() {}

@@ -1,36 +1,70 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
 package frc.robot;
 
-import java.util.HashMap;
-import java.util.Map;
+/** 
+ * Use to define all CONSTANTS for robot configuration. 
+ * Enums are provided for CAN bus devices, and DIO ports.
+ */
+public class Config {
+    /**
+     * Enum for CAN bus devices ONLY, in the format: {@code NAME(bus_id)}
+     * <p>Use {@code Config.CAN.<NAME>.getID()} method to return the bus ID value.
+     * 
+     * @param NAME      String, ALL CAPS (it's a constant!)
+     * @param bus_id    int 
+     */
+    public enum CAN {
+        ELEVATOR_MOTOR(30),
+        SHOOTER_MOTOR_L(33),
+        SHOOTER_MOTOR_R(32);
 
-public final class Config {
-    private static Map<String, Integer> canIDs = new HashMap<>();
-    private static Map<String, Integer> dioPorts = new HashMap<>();
+        /* Do not change enum below this line */
+        public final int bus_id;
 
-    static {
-    // Map canIDs
-    canIDs.put("ELEVOTOR_MOTOR", 30);
-    canIDs.put("SHOOTER_MOTOR_L", 33);
-    canIDs.put("SHOOTER_MOTOR_R", 32);
-    
-    // Map dioPorts
-    dioPorts.put("ELEVATOR_LIMIT_SWITCH", 0);
-    dioPorts.put("CORAL_SENSOR_F", 2);
-    dioPorts.put("CORAL_SENSOR_B", 1);
+        private CAN(int bus_id) {
+            this.bus_id = bus_id;
+        }
+
+        /** 
+         * Returns the value representing the CAN Bus ID for the named device. 
+         * <p>Ex. {@code Config.CAN.ELEVATOR_MOTOR.getID()} 
+         * @return int
+         */
+        public int getID() {
+            return bus_id;
+        }
+
     }
 
-    // Map.copyOf creates an immutable HashMap from the previous HashMap
-    public static final Map<String, Integer> CAN_ID = Map.copyOf(canIDs);
-    public static final Map<String, Integer> DIO_PORT = Map.copyOf(dioPorts);
+     /**
+     * Enum for DIO devices ONLY, in the format: {@code NAME(port_number)}
+     * @param NAME (String, ALL CAPS)
+     * @param port_number (int)
+     */
+    public enum DIO {
+        ELEVATOR_LIMIT_SWITCH(0),
+        CORAL_SENSOR_F(2),
+        CORAL_SENSOR_B(1); 
 
-    // Getter method for retrieving a canIDs ID for a Device
-    public static final int getCanID(String canIDsDeviceName) {
-        return canIDs.get(canIDsDeviceName);
-    }
+        /* Do not change enum below this line */
+        public final int port; 
 
-    // Getter method for retrieving a dioPorts port number for a Device
-    public static final int getDioPort(String dioPortsDeviceName) {
-            return dioPorts.get(dioPortsDeviceName);
+        private DIO(int port) {
+            this.port = port;
+        }
+
+        /** 
+         * Returns the value representing the DIO Port number for the named device. 
+         * <p>Ex. {@code Config.DIO.ELEVATOR_LIMIT_SWITCH.getPort()} 
+         * @return int
+         */
+        public int getPort() {
+            return port;
+        }
+
     }
 
 }

@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "EnumConfig",
+      "request": "launch",
+      "mainClass": "frc.robot.EnumConfig",
+      "projectName": "2025-FRC-Reefscape"
+    },
+    {
+      "type": "java",
       "name": "Config",
       "request": "launch",
       "mainClass": "frc.robot.Config",
